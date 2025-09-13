@@ -12,11 +12,16 @@ var isWriting = false
 function effectWrite () {
     isWriting = true
     var boxLetter = document.querySelector(".letterContent")
+    var rightContent = document.querySelector(".rightContent")
     letterContentSplited = letterContent.split("")
     
     letterContentSplited.forEach((val, index) => {
         setTimeout(() => {
             boxLetter.innerHTML += val    
+            
+            // Auto scroll để theo dõi nội dung đang được gõ
+            rightContent.scrollTop = rightContent.scrollHeight
+            
             // Khi viết xong ký tự cuối cùng, mở khóa click
             if (index === letterContentSplited.length - 1) {
                 setTimeout(() => {
